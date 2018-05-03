@@ -101,7 +101,8 @@ message received.
     >>> def callback(message):
     ...     print(message.data)
     ...     message.ack()
-    >>> future = subscriber.subscribe(subscription_name, callback)
+    >>> subscription = subscriber.subscribe(subscription_name)
+    >>> future = subscription.open(callback)
 
 You can use the future to block the main thread, and raise any exceptions
 that originate asynchronously.
